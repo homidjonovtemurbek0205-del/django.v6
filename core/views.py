@@ -1,18 +1,21 @@
 from django.shortcuts import render
-from .forms import StudentForm
-from .models import Student
+from .forms import BookForm
+from .models import Book
 
 def home(request):
-    students = Student.objects.all()
-    return render(request, 'index.html', {'students': students})
+    books = Book.objects.all()
+    return render(request, 'index.html', {'books': books})
 
 
-def add_student(request):
-    form = StudentForm()
+def add_book(request):
+    form = BookForm()
     if request.method == 'POST':
-        form = StudentForm(request.POST)
+        form = BookForm(request.POST)
         if form.is_valid():
-            Student.objects.create(**form.cleaned_data)
+            Book.objects.create(**form.cleaned_data)
             return render(request, 'success.html')
     data = {'form': form}
-    return render(request, 'student.html', data)
+    return render(request, 'book.html', data)
+
+def success(request):
+    return render(request, 'success.html')

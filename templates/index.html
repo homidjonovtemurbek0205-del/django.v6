@@ -9,11 +9,15 @@
 </head>
 <body>
     <h1>Home page</h1>
-    <a href="{% url 'student-qoshish'  %}">Student qo'shish pageiga o'tish</a>
+    <a href="{% url 'add_book'  %}">Kitob qo'shish pageiga o'tish</a>
 
     <h2>Studentlar ro'yhati</h2>
-    {% for student in students %}
-        <p> {{student.username}}  | {{student.email}}</p>
+    {% for book in books %}
+        <p> {{book.title }} <br>
+            Mallif :  {{book.author}}  <br>
+            Yil :  {{book.year}}  <br>
+            Janr :  {{book.genre}} <br>
+        </p>
     {%endfor%}
 </body>
 </html>

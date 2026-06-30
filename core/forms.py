@@ -1,8 +1,7 @@
 from django import forms
+from .models import Book
 
-class StudentForm(forms.Form):
-    username = forms.CharField(max_length=50, min_length=4)
-    password = forms.CharField(widget=forms.PasswordInput())
-    email = forms.EmailField()
-    bio = forms.CharField(widget=forms.Textarea())
-    
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ['title', 'author', 'year', 'genre']
